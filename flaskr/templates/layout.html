@@ -1,0 +1,24 @@
+<!doctype html>
+<title>EventNote</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <a href="{{ url_for('show_entries') }}"><h2>Daily Event Note</h2></a>
+  <div class=metanav>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">Login</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash >
+        {% if not session.logged_in %}
+            <p>Enter Your Event Notes</p>
+        {% else %}
+            <p>Please Login before Modified Data</p>
+        {% endif %}
+      {{ message }}
+    </div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>
