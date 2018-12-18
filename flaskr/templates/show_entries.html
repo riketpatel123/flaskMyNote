@@ -12,13 +12,14 @@
     </form>
   {% endif %}
   <table class=entries>
-  {% for entry in entries %}
-    <tr>
+     <tr>
       <td>ID</td>
       <td>Title</td>
       <td>Note</td>
       <td>Command</td>
     </tr>
+  {% for entry in entries %}
+
     <tr>
       <td>{{ entry.id }}.</td>
       <td>{{ entry.title }}</td>
@@ -26,7 +27,8 @@
       <td>
         <form action="{{ url_for('delete_entry') }}" method=post class=delete-entry>
           <input type="hidden" name="entry_id" value="{{ entry.id }}">
-          <input type="submit" value="Delete"></form>
+          <input type="submit" value="Delete">
+        </form>
       </td>
     </tr>
   {% else %}
